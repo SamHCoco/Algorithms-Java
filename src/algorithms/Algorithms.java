@@ -12,7 +12,7 @@ public class Algorithms {
      * @param array Double array to be sorted
      * @return Array in sorted ascending order
      */
-    public static Double[] BubbleSort(Double[] array){
+    public static Double[] bubbleSort(Double[] array){
         int arraySize = array.length;
         if(arraySize < 2){
             System.out.println("ERROR: list must contain at least 2 number or more");
@@ -45,7 +45,54 @@ public class Algorithms {
                 i = 0;
             }
         }
-        System.out.println("ARRAY SUCCESSFULLY SORTED: \n" + Arrays.toString(array));
+        System.out.println("BUBBLE SORT: \n" + Arrays.toString(array));
         return array;
+    }
+
+    /**
+     * Validates array by checking the array isn't empty.
+     * @param array the array to be validated
+     * @param algorithmName the name of the algorithm calling the method for a validation
+     * @return true if array is not empty, false otherwise
+     */
+    public static boolean isInputValid(Double[] array, String algorithmName){
+        if(array.length == 0){
+            System.out.println(algorithmName + " ERROR : input array is empty");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Searches for a specified element in an array using Binary Search algorithm
+     * @param searchValue the value to be found
+     * @param array the array that is being searched for the specified value
+     * @return the index of the value if found, null if not
+     */
+    public static Integer binarySearch(double searchValue, Double[] array){
+        if(!isInputValid(array, "BINARY SEARCH")){
+            return null;
+        }
+        Arrays.sort(array);
+        System.out.println("BINARY SEARCH - SORT RESULT: " + Arrays.toString(array));
+        int firstIndex = 0;
+        int lastIndex = array.length - 1;
+        int middleIndex = -1;
+        boolean found = false;
+        while(!found){
+            middleIndex = (int) Math.floor((firstIndex + lastIndex) / 2);
+            if(middleIndex == firstIndex){
+                System.out.println("BINARY SEARCH: " + searchValue + " not found");
+                return null;
+            } else if(array[middleIndex] == searchValue){
+                System.out.println("BINARY SEARCH: " + searchValue + " found at index " + middleIndex);
+                found  = true;
+            } else if(searchValue > array[middleIndex]){
+                firstIndex = middleIndex;
+            } else if(searchValue < array[middleIndex]){
+                lastIndex = middleIndex;
+            }
+        }
+        return middleIndex;
     }
 }
