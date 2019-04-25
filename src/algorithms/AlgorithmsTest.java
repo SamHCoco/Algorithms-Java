@@ -8,8 +8,14 @@ public class AlgorithmsTest {
     private Double[] expectedSort = {-535.5, 3.14159, 3.14159, 32d, 54d, 4000d};
 
     @Test
-    public void BubbleSort(){
-        assertArrayEquals(Algorithms.BubbleSort(unsortedArray), expectedSort);
+    public void bubbleSort(){
+        assertArrayEquals(Algorithms.bubbleSort(unsortedArray), expectedSort);
+    }
+
+    @Test
+    public void binarySearch(){
+        assertEquals(Algorithms.binarySearch(32, unsortedArray), 3, 0);
+        assertNull(Algorithms.binarySearch(1_000, unsortedArray));
     }
 
 }
