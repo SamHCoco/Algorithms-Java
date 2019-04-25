@@ -45,3 +45,33 @@ private static Double[] BubbleSort(Double[] array){
     return array;
 }
 ```
+# Searching Algorithms
+*  ## Binary Search
+```Java
+public static Integer binarySearch(double searchValue, Double[] array){
+    if(!isInputValid(array, "BINARY SEARCH")){
+        return null;
+    }
+    Arrays.sort(array);
+    System.out.println("BINARY SEARCH - SORT RESULT: " + Arrays.toString(array));
+    int firstIndex = 0;
+    int lastIndex = array.length - 1;
+    int middleIndex = -1;
+    boolean found = false;
+    while(!found){
+        middleIndex = (int) Math.floor((firstIndex + lastIndex) / 2);
+        if(middleIndex == firstIndex){
+            System.out.println("BINARY SEARCH: " + searchValue + " not found");
+            return null;
+        } else if(array[middleIndex] == searchValue){
+            System.out.println("BINARY SEARCH: " + searchValue + " found at index " + middleIndex);
+            found  = true;
+        } else if(searchValue > array[middleIndex]){
+            firstIndex = middleIndex;
+        } else if(searchValue < array[middleIndex]){
+            lastIndex = middleIndex;
+        }
+    }
+    return middleIndex;
+}
+```
