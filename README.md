@@ -1,12 +1,11 @@
 # Algorithms: Java Implementations
-Implementation of various classes of algorithms (e.g. search or sort) in Java.
+The source code samples below are my implementations of various algorithms using Java.
 
 # Introduction
 An algorithm can be defined as a series of steps used to produce some result. They have a specific meaning in computer science and are defined by the following **3 characteristics**:
  * *They are finite: algorithms must terminate after a finite number of steps.*
  * *Algorithms operate on data.*
  * *They must produce at least one result as output.*
-
 
 # Sorting Algorithms
 *  ## Bubble Sort
