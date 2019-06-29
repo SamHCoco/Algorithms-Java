@@ -1,10 +1,13 @@
 package algorithms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Algorithms {
 
     public static void main(String[] args) {
+        Double[] t = {4000d, -535.5, 54d, 32d, 3.14159, 3.14159};
+        quickSort(t, 0, 5);
     }
 
     /**
@@ -95,4 +98,68 @@ public class Algorithms {
         }
         return middleIndex;
     }
+
+    public static Double[] quickSort(Double[] array, int startIndex, int endIndex){
+        int pivotIndex;
+        if(!isInputValid(array, "QUICK SORT")){
+            return null;
+        }
+//        if(startIndex < 0 || endIndex < 0){
+//            System.out.println("QUICK SORT ERROR: START or END INDEX CANNOT BE LESS THAN 0");
+//            return null;
+//        }
+        if(startIndex < endIndex){
+            pivotIndex = partition(array, startIndex, endIndex);
+            quickSort(array, startIndex, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, endIndex);
+        }
+        if(startIndex == endIndex){
+            System.out.println("QUICK SORT COMPLETE: " + Arrays.toString(array));
+        }
+        return array;
+
+    }
+
+    public static int partition(Double[] array, int firstIndex, int lastIndex){
+        int partitionIndex = firstIndex;
+        int pivotIndex = lastIndex;
+        double pivotValue = array[pivotIndex];
+        int pivotValueCounter = 0;
+        double partitionValue;
+
+        for(int i = firstIndex; i < array.length - 1; i++){
+            if(array[i] > pivotValue){
+                continue;
+            }
+            if(array[i] < pivotValue){
+                partitionValue = array[partitionIndex];
+                array[partitionIndex] = array[i];
+                array[i] = partitionValue;
+                partitionIndex++;
+            } else if(array[i] == pivotValue){
+                pivotValueCounter++;
+            }
+        }
+        array[pivotIndex] = array[partitionIndex];
+        array[partitionIndex] = pivotValue;
+        pivotIndex = partitionIndex;
+        ArrayList<Double> partitionedArray = new ArrayList<>();
+        if(pivotValueCounter > 0){
+            for(int i = 0; i < array.length; i++){
+                if(array[i] != pivotValue){
+                   partitionedArray.add(array[i]);
+                }
+                if(i == pivotIndex){
+                    for(int j = 0; j < pivotValueCounter; j++){
+                        partitionedArray.add(pivotValue);
+                    }
+                }
+            }
+        }
+        for(int k = 0; k < partitionedArray.size(); k++){
+            array[k] = partitionedArray.get(k);
+        }
+        return pivotIndex;
+    }
+
 }
