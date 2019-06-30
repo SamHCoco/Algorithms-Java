@@ -56,7 +56,7 @@ public class Algorithms {
      * Validates array by checking the array isn't empty.
      * @param array the array to be validated
      * @param algorithmName the name of the algorithm calling the method for a validation
-     * @return true if array is not empty, false otherwise
+     * @return True if array is not empty, false otherwise
      */
     public static boolean isInputValid(Double[] array, String algorithmName){
         if(array.length == 0){
@@ -70,7 +70,7 @@ public class Algorithms {
      * Searches for a specified element in an array using Binary Search algorithm
      * @param searchValue the value to be found
      * @param array the array that is being searched for the specified value
-     * @return the index of the value if found, null if not
+     * @return The index of the value if found, null if not
      */
     public static Integer binarySearch(double searchValue, Double[] array){
         if(!isInputValid(array, "BINARY SEARCH")){
@@ -99,35 +99,44 @@ public class Algorithms {
         return middleIndex;
     }
 
+    /**
+     * Recursively sorts an array of numbers in ascending order using the
+     * Quick Sort algorithm.
+     * @param array the array to be sorted
+     * @param startIndex the beginning index of the array
+     * @param endIndex the end index of the array
+     * @return Array sorted in ascending order
+     */
     public static Double[] quickSort(Double[] array, int startIndex, int endIndex){
         int pivotIndex;
         if(!isInputValid(array, "QUICK SORT")){
             return null;
         }
-//        if(startIndex < 0 || endIndex < 0){
-//            System.out.println("QUICK SORT ERROR: START or END INDEX CANNOT BE LESS THAN 0");
-//            return null;
-//        }
         if(startIndex < endIndex){
             pivotIndex = partition(array, startIndex, endIndex);
             quickSort(array, startIndex, pivotIndex - 1);
             quickSort(array, pivotIndex + 1, endIndex);
         }
-        if(startIndex == endIndex){
-            System.out.println("QUICK SORT COMPLETE: " + Arrays.toString(array));
-        }
+        System.out.println("QUICK SORT COMPLETE: " + Arrays.toString(array));
         return array;
-
     }
 
-    public static int partition(Double[] array, int firstIndex, int lastIndex){
+    /**
+     * Partitions an array such that all values less than the pivot are to the left of
+     * pivot and all values greater to the right. FOR USE AS PART OF QUICK SORT METHOD.
+     * @param array the array to be partitioned
+     * @param firstIndex the beginning index of the array
+     * @param lastIndex the end index of the array
+     * @return The array partitioned along its pivot
+     */
+    private static int partition(Double[] array, int firstIndex, int lastIndex){
         int partitionIndex = firstIndex;
         int pivotIndex = lastIndex;
         double pivotValue = array[pivotIndex];
         int pivotValueCounter = 0;
         double partitionValue;
 
-        for(int i = firstIndex; i < array.length - 1; i++){
+        for(int i = firstIndex; i < array.length; i++){
             if(array[i] > pivotValue){
                 continue;
             }
@@ -161,5 +170,4 @@ public class Algorithms {
         }
         return pivotIndex;
     }
-
 }
