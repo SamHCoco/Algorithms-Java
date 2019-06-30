@@ -52,6 +52,67 @@ private static Double[] BubbleSort(Double[] array){
     return array;
 }
 ```
+*  ## Quick Sort
+```Java
+public static Double[] quickSort(Double[] array, int startIndex, int endIndex){
+    int pivotIndex;
+    if(!isInputValid(array, "QUICK SORT")){
+        return null;
+    }
+    if(startIndex < endIndex){
+        pivotIndex = partition(array, startIndex, endIndex);
+        quickSort(array, startIndex, pivotIndex - 1);
+        quickSort(array, pivotIndex + 1, endIndex);
+    }
+    System.out.println("QUICK SORT COMPLETE: " + Arrays.toString(array));
+    return array;
+}
+```
+ ### Partition Method
+```Java
+private static int partition(Double[] array, int firstIndex, int lastIndex){
+    int partitionIndex = firstIndex;
+    int pivotIndex = lastIndex;
+    double pivotValue = array[pivotIndex];
+    int pivotValueCounter = 0;
+    double partitionValue;
+
+    for(int i = firstIndex; i < array.length; i++){
+        if(array[i] > pivotValue){
+            continue;
+        }
+        if(array[i] < pivotValue){
+            partitionValue = array[partitionIndex];
+            array[partitionIndex] = array[i];
+            array[i] = partitionValue;
+            partitionIndex++;
+        } else if(array[i] == pivotValue){
+            pivotValueCounter++;
+        }
+    }
+    array[pivotIndex] = array[partitionIndex];
+    array[partitionIndex] = pivotValue;
+    pivotIndex = partitionIndex;
+    ArrayList<Double> partitionedArray = new ArrayList<>();
+    if(pivotValueCounter > 0){
+        for(int i = 0; i < array.length; i++){
+            if(array[i] != pivotValue){
+               partitionedArray.add(array[i]);
+            }
+            if(i == pivotIndex){
+                for(int j = 0; j < pivotValueCounter; j++){
+                    partitionedArray.add(pivotValue);
+                }
+            }
+        }
+    }
+    for(int k = 0; k < partitionedArray.size(); k++){
+        array[k] = partitionedArray.get(k);
+    }
+    return pivotIndex;
+}
+```
+
 # Searching Algorithms
 *  ## Binary Search
 ```Java
