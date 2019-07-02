@@ -9,6 +9,7 @@ An algorithm can be defined as a series of steps used to produce some result. Th
 
 # Sorting Algorithms
 *  ## Bubble Sort
+The *Bubble Sort* algorithm compares the value of array[i] and its neighbour array[i+1]. If the value of array[i] is greater than the value at array[i+1] then the two values swap positions. If the values are the same or array[i] is less than array[i+1] then no swap is made. This procedure is repeated using loops until a complete loop is executed with no swaps made, indicating the array has been successfully sorted in ascending order.
 ```Java
 /**
  * Sorts a single double array into ascending order.
