@@ -9,7 +9,10 @@ An algorithm can be defined as a series of steps used to produce some result. Th
 
 # Sorting Algorithms
 *  ## Bubble Sort
-The *Bubble Sort* algorithm compares the value of array[i] and its neighbour array[i+1]. If the value of array[i] is greater than the value at array[i+1] then the two values swap positions. If the values are the same or array[i] is less than array[i+1] then no swap is made. This procedure is repeated using loops until a complete loop is executed with no swaps made, indicating the array has been successfully sorted in ascending order.
+The *Bubble Sort* algorithm compares the value of *array[i]* and its neighbour *array[i+1]*. If the value of *array[i]* is greater than the value at *array[i+1]* then the two values swap positions. If the values are the same or *array[i]* is less than *array[i+1]* then no swap is made. This procedure is repeated using loops until a complete loop is executed with no swaps made, indicating the array has been successfully sorted in ascending order.
+#### Time Complexity:
+ - WORST CASE -  **О(n^2)**
+
 ```Java
 /**
  * Sorts a single double array into ascending order.
@@ -54,6 +57,11 @@ private static Double[] BubbleSort(Double[] array){
 }
 ```
 *  ## Quick Sort
+Quick sort belongs to the divide-and-conquer family of sorting algorithm. It uses recursion to sort the items of an array that possess a “less than”, "greater than" or "equal to" relationship, such as an array of numbers.
+The algorithm works as follows:
+1. ) A pivot is selected, typically the last index in the array.
+2. ) All the elements in the array whose value is <span style="color:red;">greater than the pivot</span> are placed to the <span style="color:red;">right of pivot</span> and all elements <span style="color:blue;">less than the pivot</span> are placed to the <span style="color:blue;">left of pivot</span>. The array is now partitioned into two segments, with the pivot being the partition point of these two segments.
+3. ) Steps 1 and 2 are repeated recursively on the two segments, for *n-1* and *n+1* where *n* is the index of the current pivot, until the entire array is sorted.
 ```Java
 public static Double[] quickSort(Double[] array, int startIndex, int endIndex){
     int pivotIndex;
@@ -69,7 +77,7 @@ public static Double[] quickSort(Double[] array, int startIndex, int endIndex){
     return array;
 }
 ```
- ### Partition Method
+### Partition Method
 ```Java
 private static int partition(Double[] array, int firstIndex, int lastIndex){
     int partitionIndex = firstIndex;
@@ -113,6 +121,8 @@ private static int partition(Double[] array, int firstIndex, int lastIndex){
     return pivotIndex;
 }
 ```
+#### Time Complexity:
+ - WORST CASE -  **О(n^2)**
 
 # Searching Algorithms
 *  ## Binary Search
