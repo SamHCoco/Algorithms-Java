@@ -126,6 +126,7 @@ private static int partition(Double[] array, int firstIndex, int lastIndex){
 
 # Searching Algorithms
 *  ## Binary Search
+Binary Search operates on a sorted array to find a desired search value by continually dividing the array interval it is searching for the value in in half. It begins with the midpoint of the entire array (or approximate midpoint if the array contains an odd number of elements) and determines whether the element at this position is greater, less than or equal to the desired search value. If it is greater than the desired value, the algorithm moves to the midpoint of the array interval to the left of the current midpoint where the array's values are all smaller since this must logically be where the desired value is to be found if it is indeed contained in the array. This same process is applied if the midpoint is found to be less than the desired value, except the new search interval becomes the array interval to the right of the current midpoint where the array's values are all greater than that midpoint. This entire process is repeated until either the value is found or the array cannot further be sub-divided into a smaller search interval in which case the desired element is not contained in the array.
 ```Java
 public static Integer binarySearch(double searchValue, Double[] array){
     if(!isInputValid(array, "BINARY SEARCH")){
@@ -154,3 +155,5 @@ public static Integer binarySearch(double searchValue, Double[] array){
     return middleIndex;
 }
 ```
+#### Time Complexity:
+ - WORST CASE - **O(log n)** 
