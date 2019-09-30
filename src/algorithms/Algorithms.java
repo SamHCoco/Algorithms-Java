@@ -170,4 +170,27 @@ public class Algorithms {
         }
         return pivotIndex;
     }
+
+    /**
+     * Sorts an array into ascending order using the 'Selection Sort' algorithm.
+     * @param array The array to be sorted
+     * @return Array sorted in ascending order
+     */
+    public static Double[] selectionSort(Double[] array){
+        double minimum;
+        int minimumIndex = 0;
+        for(int i = 0; i < array.length - 1; i++){
+            minimum = array[i];
+            for(int j = i; j < array.length; j++){
+                if(array[j] <= minimum){
+                    minimum = array[j];
+                    minimumIndex = j;
+                }
+            }
+            array[minimumIndex] = array[i];
+            array[i] = minimum;
+        }
+        System.out.println(Arrays.toString(array));
+        return array;
+    }
 }
