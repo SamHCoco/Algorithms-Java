@@ -24,4 +24,8 @@ public class AlgorithmsTest {
         assertArrayEquals(Algorithms.quickSort(unsortedArray, 0, 5), expectedSort);
     }
 
+    @Test
+    public void selectionSort(){
+        assertArrayEquals(Algorithms.selectionSort(unsortedArray), expectedSort);
+    }
 }
