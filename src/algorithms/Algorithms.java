@@ -58,7 +58,7 @@ public class Algorithms {
      * @param algorithmName the name of the algorithm calling the method for a validation
      * @return True if array is not empty, false otherwise
      */
-    public static boolean isInputValid(Double[] array, String algorithmName){
+    private static boolean isInputValid(Double[] array, String algorithmName){
         if(array.length == 0){
             System.out.println(algorithmName + " ERROR : input array is empty");
             return false;
@@ -174,9 +174,12 @@ public class Algorithms {
     /**
      * Sorts an array into ascending order using the 'Selection Sort' algorithm.
      * @param array The array to be sorted
-     * @return Array sorted in ascending order
+     * @return Array sorted in ascending order, null if array is empty
      */
     public static Double[] selectionSort(Double[] array){
+        if(!isInputValid(array, "SELECTION SORT")){
+            return null;
+        }
         double minimum;
         int minimumIndex = 0;
         for(int i = 0; i < array.length - 1; i++){
