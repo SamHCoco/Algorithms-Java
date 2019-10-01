@@ -123,6 +123,36 @@ private static int partition(Double[] array, int firstIndex, int lastIndex){
 ```
 #### Time Complexity:
  - WORST CASE -  **О(n^2)**
+* ## Selection Sort
+This algorithm sorts an array by cycling through the indexes of the array from 0 to *n-1*, where *n* is the size of the array, through the following steps:
+1. ) An index *i* of the array is selected.
+2. ) The smallest valued element of the array in the index interval beginning from the current index *i* to *n* is found, where *n* is the last index of the array.
+3. ) The element at index *i* is swapped with this smallest valued element.
+4. ) Steps *1*, *2* and *3* are repeated with index *i* being incremented by *+1* until the next to last index, *n-1*, is reached. The final element of the array is already in its correct position.
+```Java
+public static Double[] selectionSort(Double[] array){
+    if(!isInputValid(array, "SELECTION SORT")){
+        return null;
+    }
+    double minimum;
+    int minimumIndex = 0;
+    for(int i = 0; i < array.length - 1; i++){
+        minimum = array[i];
+        for(int j = i; j < array.length; j++){
+            if(array[j] <= minimum){
+                minimum = array[j];
+                minimumIndex = j;
+            }
+        }
+        array[minimumIndex] = array[i];
+        array[i] = minimum;
+    }
+    System.out.println(Arrays.toString(array));
+    return array;
+}
+```
+#### Time Complexity:
+ - WORST CASE -  **О(n^2)**
 
 # Searching Algorithms
 *  ## Binary Search
@@ -156,4 +186,4 @@ public static Integer binarySearch(double searchValue, Double[] array){
 }
 ```
 #### Time Complexity:
- - WORST CASE - **O(log n)** 
+ - WORST CASE - **O(log n)**
