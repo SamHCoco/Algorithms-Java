@@ -6,8 +6,40 @@ import java.util.Arrays;
 public class Algorithms {
 
     public static void main(String[] args) {
-        Double[] t = {4000d, -535.5, 54d, 32d, 3.14159, 3.14159};
-        quickSort(t, 0, 5);
+
+    }
+
+    /**
+     * Searches for a specified element in an array using Binary Search algorithm
+     * @param searchValue the value to be found
+     * @param array the array that is being searched for the specified value
+     * @return The index of the value if found, null if not
+     */
+    public static Integer binarySearch(double searchValue, Double[] array){
+        if(!isInputValid(array, "BINARY SEARCH")){
+            return null;
+        }
+        Arrays.sort(array);
+        System.out.println("BINARY SEARCH - SORT RESULT: " + Arrays.toString(array));
+        int firstIndex = 0;
+        int lastIndex = array.length - 1;
+        int middleIndex = -1;
+        boolean found = false;
+        while(!found){
+            middleIndex = (int) Math.floor((firstIndex + lastIndex) / 2);
+            if(middleIndex == firstIndex){
+                System.out.println("BINARY SEARCH: " + searchValue + " not found");
+                return null;
+            } else if(array[middleIndex] == searchValue){
+                System.out.println("BINARY SEARCH: " + searchValue + " found at index " + middleIndex);
+                found  = true;
+            } else if(searchValue > array[middleIndex]){
+                firstIndex = middleIndex;
+            } else if(searchValue < array[middleIndex]){
+                lastIndex = middleIndex;
+            }
+        }
+        return middleIndex;
     }
 
     /**
@@ -66,38 +98,6 @@ public class Algorithms {
         return true;
     }
 
-    /**
-     * Searches for a specified element in an array using Binary Search algorithm
-     * @param searchValue the value to be found
-     * @param array the array that is being searched for the specified value
-     * @return The index of the value if found, null if not
-     */
-    public static Integer binarySearch(double searchValue, Double[] array){
-        if(!isInputValid(array, "BINARY SEARCH")){
-            return null;
-        }
-        Arrays.sort(array);
-        System.out.println("BINARY SEARCH - SORT RESULT: " + Arrays.toString(array));
-        int firstIndex = 0;
-        int lastIndex = array.length - 1;
-        int middleIndex = -1;
-        boolean found = false;
-        while(!found){
-            middleIndex = (int) Math.floor((firstIndex + lastIndex) / 2);
-            if(middleIndex == firstIndex){
-                System.out.println("BINARY SEARCH: " + searchValue + " not found");
-                return null;
-            } else if(array[middleIndex] == searchValue){
-                System.out.println("BINARY SEARCH: " + searchValue + " found at index " + middleIndex);
-                found  = true;
-            } else if(searchValue > array[middleIndex]){
-                firstIndex = middleIndex;
-            } else if(searchValue < array[middleIndex]){
-                lastIndex = middleIndex;
-            }
-        }
-        return middleIndex;
-    }
 
     /**
      * Recursively sorts an array of numbers in ascending order using the
@@ -196,4 +196,28 @@ public class Algorithms {
         System.out.println(Arrays.toString(array));
         return array;
     }
+
+    /**
+     * Sorts an array into ascending order using the Insertion Sort algorithm.
+     * @param array - the unsorted Double array to be sorted
+     * @return Array sorted in ascending order
+     */
+    public static Double[] insertionSort(Double[] array){
+        if(!isInputValid(array, "INSERTION SORT")){
+            return null;
+        }
+        for(int i = 0; i < array.length; i++){
+            int index = i;
+            double value = array[index];
+            while(index > 0 && array[index - 1] > value){
+                array[index] = array[index-1];
+                index = index - 1;
+            }
+            array[index] = value;
+
+        }
+        System.out.println(Arrays.toString(array));
+        return array;
+    }
+
 }
