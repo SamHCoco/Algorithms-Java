@@ -3,7 +3,6 @@ package algorithms;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
 public class AlgorithmsTest {
     private Double[] unsortedArray = {4000d, -535.5, 54d, 32d, 3.14159, 3.14159};
     private Double[] expectedSort = {-535.5, 3.14159, 3.14159, 32d, 54d, 4000d};
@@ -34,5 +33,12 @@ public class AlgorithmsTest {
         assertArrayEquals(Algorithms.selectionSort(unsortedArray), expectedSort);
         assertArrayEquals(Algorithms.selectionSort(unsortedArray2), expectedSort2);
         assertNull(Algorithms.selectionSort(emptyArray));
+    }
+
+    @Test
+    public void insertionSort(){
+        assertArrayEquals(Algorithms.insertionSort(unsortedArray), expectedSort);
+        assertArrayEquals(Algorithms.insertionSort(unsortedArray2), expectedSort2);
+        assertNull(Algorithms.insertionSort(emptyArray));
     }
 }
