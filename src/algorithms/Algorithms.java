@@ -193,7 +193,7 @@ public class Algorithms {
             array[minimumIndex] = array[i];
             array[i] = minimum;
         }
-        System.out.println(Arrays.toString(array));
+        System.out.println("SELECTION SORT COMPLETE: " + Arrays.toString(array));
         return array;
     }
 
@@ -216,7 +216,7 @@ public class Algorithms {
             array[index] = value;
 
         }
-        System.out.println(Arrays.toString(array));
+        System.out.println("INSERTION SORT COMPLETE: " + Arrays.toString(array));
         return array;
     }
 
