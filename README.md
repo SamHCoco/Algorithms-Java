@@ -153,6 +153,33 @@ public static Double[] selectionSort(Double[] array){
 ```
 #### Time Complexity:
  - WORST CASE -  **О(n^2)**
+*  ## Insertion Sort
+This algorithm is simple to implement but inefficient for sorting arrays with a large number of elements. It works as follows:
+1. ) The elements of the array are evaluated from *0* to *n-1*, where *n* is the size of the array.
+2. ) For every element *e* of the array, all elements to the left of *e's* index which are greater than *e* are shifted *+1* from their current position (to the right). All elements to the left of *e* whose values are smaller than or equal to *e* stay in their position.
+3. ) *Step 2* will have created an opening by freeing up an index *i* in the array where all elements to the left of this index are less than or equal to *e* and all elements to the right, up to the index of *e*, will be greater than *e*.
+4. ) Element *e* is placed at index *i*. The process is repeated until every element of the array has been evaluated at which point the array is sorted.
+```Java
+public static Double[] insertionSort(Double[] array){
+      if(!isInputValid(array, "INSERTION SORT")){
+          return null;
+      }
+      for(int i = 0; i < array.length; i++){
+          int index = i;
+          double value = array[index];
+          while(index > 0 && array[index - 1] > value){
+              array[index] = array[index-1];
+              index = index - 1;
+          }
+          array[index] = value;
+
+      }
+      System.out.println(Arrays.toString(array));
+      return array;
+}
+```
+#### Time Complexity:
+ - WORST CASE -  **О(n^2)**
 
 # Searching Algorithms
 *  ## Binary Search
